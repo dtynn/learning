@@ -214,3 +214,48 @@ Each elementary matrix $\mat{E}$ is invertible. The inverse of $\mat{E}$ is the 
 
 An $n \times n$ matrix $\mat{A}$ is invertible if and only if $\mat{A}$ is row equivalent to $\mat{I}_n$, and in this case, any sequence of elementary row operations that reduces $\mat{A}$ to $\mat{I}_n$ also transforms $\mat{I}_n$ into $\mat{A} ^{-1}$
 
+
+
+
+
+#### An Algorithm for Finding $\mat{A} ^{-1}$
+
+- Row reduce the augmented matrix $\begin{bmatrix} \mat{A} & \mat{I} \end{bmatrix}$. If  $\mat{A}$ is row equivalent to $\mat{I}$, then $\begin{bmatrix} \mat{A} & \mat{I} \end{bmatrix}$ is row equivalent to $\begin{bmatrix} \mat{I} & \mat{A} ^{-1} \end{bmatrix}$. Otherwise, $\mat{A}$ does not have inverse.
+
+
+
+#### Another View of Matrix Inversion
+
+从 $\begin{bmatrix} \mat{A} & \mat{I} \end{bmatrix}$ 到 $\begin{bmatrix} \mat{I} & \mat{A} ^{-1} \end{bmatrix}$ 的行化简过程可以视作同时求解
+
+$\mateq{e_1}, \mateq{e_2}, \dots , \mateq{e_n}$
+
+当某些问题只要求算出 $\mat{A} ^{-1}$ 的特定列时, 只需要求解对应的方程即可.
+
+
+
+### 2.3 Characterizations of Invertible Matricex
+
+##### Theorem 8
+
+Let $\mat{A}$ be a square $n \times n$ matrix. Then the following statements are equivalent.
+
+That is, for a given $\mat{A}$, the statements are either all true or all false.
+
+1. $\mat{A}$ is an invertible matrix
+2. $\mat{A}$ is row equivalent to the $n \times n$ identity matrix
+3. $\mat{A}$ has n pivot positions
+4. The equation $\mateq{0}$ has only the trivial solution
+5. The columns of $\mat{A}$ form a linearly independent set
+6. The linear transformation $\vec{x} \to \mat{A} \vec{x}$ is one to one
+7. The equation $\mateq{b}$ has at least one solution for each $\vec{b}$ in $\real{n}$
+8. The colunms of $\mat{A}$ span $\real{n}$
+9. The linear transformation $\vec{x} \to \mat{A} \vec{x}$ maps $\real{n}$ to $\real{n}$
+10. There is an $n \times n$ matrix $\mat{C}$ such that $\mat{CA} = \mat{I}$
+11. There is an $n \times n$ matrix $\mat{D}$ such that $\mat{AD} = \mat{I}$
+12. $\mat{A} ^T$ in an invertible matrix
+
+
+
+Let $\mat{A}$ and $\mat{B}$ be square matrices. If $\mat{AB} = \mat{I}$, then $\mat{A}$ and $\mat{B}$ are both invertible, with $\mat{B} = \mat{A} ^{-1}$ and $\mat{A} = \mat{B} ^{-1}$
+
