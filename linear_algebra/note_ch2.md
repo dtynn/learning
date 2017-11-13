@@ -259,3 +259,170 @@ That is, for a given $\mat{A}$, the statements are either all true or all false.
 
 Let $\mat{A}$ and $\mat{B}$ be square matrices. If $\mat{AB} = \mat{I}$, then $\mat{A}$ and $\mat{B}$ are both invertible, with $\mat{B} = \mat{A} ^{-1}$ and $\mat{A} = \mat{B} ^{-1}$
 
+
+
+- The power of the Invertible Matrix Theorem lies in the connections is provides among so many important concepts
+- However, the theorem applies only to square matrices
+
+
+
+#### Invertible Linear Transformations
+
+A linear transformation $\mat{T}: \real{n} \to \real{n} $ is said to be **invertible** if there exists a function $\mat{S}: \real{n} \to \real{n}$ such that
+
+$\mat{S}(\mat{T} (\vec{x})) = \vec{x}$ for all $\vec{x}$ in $\real{n}$
+
+$\mat{T}(\mat{S} (\vec{x})) = \vec{x}$ for all $\vec{x}$ in $\real{n}$
+
+We call $\mat{S}$ the **inverse** of $\mat{T}$ and write it as $\mat{T} ^{-1}$
+
+
+
+##### Theorem 9
+
+Let $\mat{T}: \real{n} \to \real{n}$ be a linear transformation and let $\mat{A}$ be the standard matrix for $\mat{T}$. Then $\mat{T}$ is invertible if and only if $\mat{A}$ is an invertible matrix. In that case, the linear transformation $\mat{S}$ given by $\mat{S}(\vec{x}) = \mat{A} ^{-1} \vec{x}$ is the unique function that satisfying the equatils above.
+
+
+
+#### 2.4 Partitioned Matrices
+
+#### Addition and Scalar Multiplication
+
+
+
+#### Muliplication of Partitioned Matrices
+
+##### Theorem10
+
+Column-Row Expansion of $\mat{AB}$
+
+If $\mat{A}$ is $m \times n$ and $\mat{B}$ is $n \times p$, then
+$$
+\mat{AB} = \begin{bmatrix} col_1(\mat{A}) & col_2(\mat{A}) & \dots & col_n(\mat{A})  \end{bmatrix} \begin{bmatrix}  row_1(\mat{B}) \\ row_2(\mat{B}) \\ \vdots \\ row_n(\mat{B}) \end{bmatrix} \\
+= col_1(\mat{A}) row_1(\mat{B}) + \dots + col_n(\mat{A}) row_n(\mat{B})
+$$
+
+
+#### Inverse of Partitioned Matrices
+
+
+
+#### 2.5 Matrix Factorizations 矩阵因式分解
+
+#### The LU Factorization
+
+- 令 $\mat{A} = \mat{L} \mat{U}$, 其中 $\mat{L}$ 是一个 $m \times m$ 对角线上元素均为1的下三角矩阵, 而$\mat{U}$ 是 $\mat{A}$ 的阶梯形, 大小为 $m \times n$ 
+- $\mat{L}$ 是 不可逆的, 称为 单位下三角矩阵
+- 当 $\mat{A} = \mat{LU}$ 时, $\mateq{b}$ 可以写成 $\mat{L} (\mat{U} \vec{x}) = \vec{b}$. 将 $\mat{U} \vec{x}$ 写成 $\vec{y}$, 则可以通过先后求解下列方程来求得 $\vec{x}$
+
+$$
+\mat{L} \vec{y} = \vec{b}
+\\
+\mat{U} \vec{x} = \vec{y}
+$$
+
+
+
+#### An LU Factorization Algorithm
+
+1. Reduce $\mat{A}$ to an echelon form $\mat{U}$ by a sequence of row replacement operations, if possible.
+2. Place entries in $\mat{L}$ such that the *same sequence of row operations* reduces $\mat{L}$ to $\mat{I}$
+
+
+
+#### A Matrix Factorization in Electrical Engineering
+
+
+
+
+
+### 2.6 The Leontief Input-Output Model
+
+$$
+\left \{
+\begin{array}{c} amout
+\\ produced
+\\ \vec{x}
+\end{array}
+\right \}
+=
+\left \{
+\begin{array}{c}
+intermeiate
+\\
+demand
+\end{array}
+\right \}
++
+\left \{
+\begin{array}{c}
+final
+\\
+demand
+\\
+\vec{d}
+\end{array}
+\right \}
+$$
+
+##### The Leontief Input-Output Model, Or Production Equation
+
+$$
+\vec{x} = \mat{C} \vec{x} + \vec{d}
+$$
+
+can also be written as $\mat{I} \vec{x} - \mat{C} \vec{x} = ( \mat{I} - \mat{C} ) \vec{x} = \vec{d}$
+
+
+
+##### Theorem 11
+
+Let $\mat{C}$ be the consumption matrix for an economy, and let $\vec{d}$ be the final demand. If $\mat{C}$ and $\vec{d}$ have nonnegative entries and if each column sum of $\mat{C}$ is less than 1, then $( \mat{I} - \mat{C} ) ^{-1}$ exists and the production vector
+$$
+\vec{x} = ( \mat{I} - \mat{C} ) ^{-1} \vec{d}
+$$
+has nonnegative entries and is the unique solution of
+$$
+\vec{c} = \mat{C} \vec{x} + \vec{d}
+$$
+
+
+#### A Formula for $(\mat{I} - \mat{C}) ^{-1}$
+
+
+
+#### The Economic Importance of Entries in $( \mat{I} - \mat{C} ) ^{-1}$
+
+
+
+### 2.7 Applications To Computer Graphics
+
+
+
+
+
+### 2.8 Subspaces of $\real{n}$
+
+
+
+##### Definition
+
+A **subspace** of $\real{n}$ is any set $\mat{H}$ in $\real{n}$ that has three properties:
+
+1. The zero vector is in $\mat{H}$
+2. For each $\vec{u}$ and $\vec{v}$ in $\mat{H}$, the sum $\vec{u} + \vec{v}$ is in $\mat{H}$.
+3. For each $\vec{u}$ in $\mat{H}$ and each scalar c, the vector $c \vec{u}$ is in $\mat{H}$
+
+
+
+#### Column Space and Null Space of a matrix
+
+- The **column space** of a mtraix $\mat{A}$ is the set Col $\mat{A}$ of all linear combinations of the columns of $\mat{A}$
+- The **nul space** of a matrix $\mat{A}$ is the set Nul $\mat{A}$ of all solutions of the homogeneous equation $\mateq{0}$
+
+
+
+##### Theorem 12
+
+The null space of an $m \times n$ matrix $\mat{A}$ is a subspace of $\real{n}$. Equivalently, the set of all solutions of a system $\mateq{0}$ of m homogeneous linear equations in n unknowns is a subspace of $\real{n}$
+
