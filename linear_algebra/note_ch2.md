@@ -234,7 +234,7 @@ $\mateq{e_1}, \mateq{e_2}, \dots , \mateq{e_n}$
 
 
 
-### 2.3 Characterizations of Invertible Matricex
+### 2.3 Characterizations of Invertible Matrices
 
 ##### Theorem 8
 
@@ -253,7 +253,7 @@ That is, for a given $\mat{A}$, the statements are either all true or all false.
 9. The linear transformation $\vec{x} \to \mat{A} \vec{x}$ maps $\real{n}$ to $\real{n}$
 10. There is an $n \times n$ matrix $\mat{C}$ such that $\mat{CA} = \mat{I}$
 11. There is an $n \times n$ matrix $\mat{D}$ such that $\mat{AD} = \mat{I}$
-12. $\mat{A} ^T$ in an invertible matrix
+12. $\mat{A} ^T$ is an invertible matrix
 
 
 
@@ -426,3 +426,74 @@ A **subspace** of $\real{n}$ is any set $\mat{H}$ in $\real{n}$ that has three p
 
 The null space of an $m \times n$ matrix $\mat{A}$ is a subspace of $\real{n}$. Equivalently, the set of all solutions of a system $\mateq{0}$ of m homogeneous linear equations in n unknowns is a subspace of $\real{n}$
 
+
+
+#### Basis for a Subspace
+
+- A **basis** for a subspace $\mat{H}$ of $\real{n}$ is a linearly independent set in $\mat{H}$ that spans $\mat{H}$.
+- The set $\{ \vectors{e}{n} \}$ is called the **standard basis** for $\real{n}$
+
+
+
+##### Theorem 13
+
+The pivot columns of a matrix $\mat{A}$ form a basis for the column space of $\mat{A}$
+
+
+
+### 2.9 Dimension and Rank
+
+#### Coordinate Systems
+
+##### Definition
+
+Suppose the set $ß = \{ \vectors{b}{p} \}$ is a  basis for a subspace $\mat{H}$. For each $\vec{x}$ in $\mat{H}$, the **coordinates of x relative the basis ß** are the weights $\weights{c}{p}$ such that $\vec{x} = \lcomb{c}{b}{p}$, and the vector in $\real{p}$
+$$
+\begin{bmatrix} \vec{x} \end{bmatrix}_ß = \begin{bmatrix} c_1 \\ c_2 \\ \vdots \\ c_p \end{bmatrix}
+$$
+is called the **coordinate vector of x (relative to ß)** or the **ß-coordinate vector of x**.
+
+
+
+#### The Dimension of a Subspace
+
+- The **dimension** of a nonzero subspace $\mat{H}$, denoted by $dim \mat{H}$, is the number of vectors in any basis for $\mat{H}$. The dimension of the zero subspace $\{ \vec{0} \}$ is defined to be zero.
+
+- The **rank** of a matrix $\mat{A}$, denoted by rank $\mat{A}$, is the dimension of the column space of $\mat{A}$
+
+  Since the pivot columns of $\mat{A}$ form a basis for Col $\mat{A}$, the rank of $\mat{A}$ is just the number of pivot columns in $\mat{A}$
+
+
+
+##### Theorem 14
+
+The Rank Theorem
+
+If a matrix $\mat{A}$ has n columns, then rank $\mat{A}$ + dim Nul $\mat{A}$ = n
+
+
+
+##### Theorem 15
+
+The Basis Theorem
+
+Let $\mat{H}$ be a p-dimension subspace of $\real{n}$. Any linear independent set of exactly p elements in $\mat{H}$ is automatically a basis for $\mat{H}$. Also, any set of p elements of $\mat{H}$ tha spans $\mat{H}$ is automatically a basis for $\mat{H}$
+
+
+
+
+
+#### Rank and the Invertible Matrix Theorem
+
+##### Theorem
+
+The invertible Matrix Theorem (continued)
+
+Let $\mat{A}$ be an $n \times n$ matrix. Then the following statements are each equivalent to the statement that $\mat{A}$ is an invertible matrix.
+
+1. The columns of $\mat{A}$ form a basis of $\real{n}$
+2. Col $\mat{A}$ = $\real{n}$
+3. dim Col $\mat{A}$ = n
+4. rank $\mat{A}$ = n
+5. Nul $\mat{A}$ = $\{ \vec{0} \}$
+6. dim Nul $\mat{A}$ = 0
