@@ -1,6 +1,6 @@
-在目前的 db-engines 时序数据库排名中, 第一位的 [Influxdb](https://github.com/influxdata/influxdb) 和第七位的 [Prometheus](https://github.com/prometheus/prometheus) 都是由 go 实现的.
+在目前的 db-engines 时序数据库排名中, 第一位的 [influxdb](https://github.com/influxdata/influxdb) 和第七位的 [prometheus](https://github.com/prometheus/prometheus) 都是由 go 实现的.
 
-这次我打算阅读的源码是 Promethus 的组件 [prometheus/tsdb](https://github.com/prometheus/tsdb)
+这次我打算阅读的源码是 promethus 的组件 [prometheus/tsdb](https://github.com/prometheus/tsdb)
 
 
 
@@ -8,7 +8,7 @@
 
 首先简单介绍一下, 时序数据库 (tsdb) 全称为 Time Series Database, 通常作为各类监测, 监控系统的核心组成部分. 通常需要极高的写入速度, 尽量经济的空间占用, 和尽可能高的批量数据查询效率.
 
-除了上面提到的 Influxdb 和 Prometheus, 比较典型的还有 OpenTSDB,  KairosDB 等.
+除了上面提到的 influxdb 和 prometheus, 比较典型的还有 OpenTSDB,  KairosDB 等.
 
 
 
