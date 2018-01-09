@@ -1,4 +1,4 @@
-
+#### chunkenc
 
 ```
 chunkenc
@@ -10,7 +10,7 @@ chunkenc
 
 
 
-[chunkenc 包](https://godoc.org/github.com/prometheus/tsdb/chunkenc) 提供了时序数据点的编码格式.
+[chunkenc](https://godoc.org/github.com/prometheus/tsdb/chunkenc) 提供了时序数据点的编码格式.
 
 它定义了一个 `Chunk` 接口 及其附属的 `Appender` 和 `Iterator`接口.
 
