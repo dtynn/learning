@@ -1,6 +1,6 @@
 #### Summary
 
-`prometheus/tsdb`  (下称 ptsdb ) 的结构体之家你的层次大概可以这样划分:
+`prometheus/tsdb`  (下称 ptsdb ) 的结构体之间的层次大概可以这样划分:
 
 - DB: 对外提供的核心对象
 
