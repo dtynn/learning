@@ -6,13 +6,19 @@ import (
 	"testing"
 )
 
-func copyInts(src []int) []int {
+func ReverseInts(src []int) {
+	for i := 0; i < len(src)/2; i++ {
+		src[i], src[len(src)-1-i] = src[len(src)-1-i], src[i]
+	}
+}
+
+func CopyInts(src []int) []int {
 	dst := make([]int, len(src))
 	copy(dst, src)
 	return dst
 }
 
-func getDistinctSortCase(total int) []int {
+func GetDistinctInts(total int) []int {
 	ints := make([]int, total)
 	for i := 0; i < total; i++ {
 		ints[i] = i
@@ -38,8 +44,8 @@ type Sorter interface {
 func Sort(t *testing.T, sorter Sorter, loop int) {
 	doTest := func(t *testing.T, total int) {
 		for i := 0; i < loop; i++ {
-			ints := getDistinctSortCase(total)
-			sorted := sorter.Sort(copyInts(ints))
+			ints := GetDistinctInts(total)
+			sorted := sorter.Sort(CopyInts(ints))
 			if !sort.IntsAreSorted(sorted) {
 				t.Errorf("for case %v, get unsorted result %v", ints, sorted)
 			}
