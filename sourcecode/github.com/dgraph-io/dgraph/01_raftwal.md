@@ -1,8 +1,8 @@
+本次代码阅读基于[commit 189fdd3](https://github.com/dgraph-io/dgraph/tree/189fdd3da091075668e97b7622f974ba154b73db)
+
 ### 1. raftwal
 
 [godoc](https://godoc.org/github.com/dgraph-io/dgraph/raftwal)
-
-
 
 之前提到, `etcd/raft`提供了 `MemoryStorage` + `wal` 的方式 来对 raft 中的 HardState, Snapshot 和 Entry 进行持久化. `wal` 将数据直接写入文件.
 
