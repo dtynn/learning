@@ -107,6 +107,7 @@ func (b *BinarySearchTree) Insert(key int) {
 		if key < node.Key {
 			if node.left == nil {
 				node.left = newn
+				newn.parent = node
 				return
 			}
 
@@ -116,6 +117,7 @@ func (b *BinarySearchTree) Insert(key int) {
 
 			if node.right == nil {
 				node.right = newn
+				newn.parent = node
 				return
 			}
 
