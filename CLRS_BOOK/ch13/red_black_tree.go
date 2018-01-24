@@ -109,7 +109,7 @@ func (r *redBlackTree) insertFixup(n *node) {
 			continue
 		}
 
-		// 树节点是
+		// 叔节点是黑色
 		fatherIsLeftChild := n.parent.parent.left == n.parent.parent
 		if fatherIsLeftChild {
 			if !nodeIsLeftChild {
