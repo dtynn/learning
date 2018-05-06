@@ -136,3 +136,48 @@ rsa 非对称加密, 公钥加密, 私钥解密
 
 
 索引属性: TTL, 唯一, 稀疏
+
+
+
+#### SOLID Go Design
+
+##### Single Responsibility Principle 单一功能原则
+
+A class should have one, and only one, reason to change.
+
+鼓励你在package中构建functions、types以及方法表现出自然的凝聚力。
+
+
+
+##### Open / Closed Principle 开闭原则
+
+Software entities should be open for extension, but closed for modification. 
+
+鼓励你使用嵌入将简单的type组合成更为复杂的。
+
+
+
+##### Liskov Substitution Principle 里氏替换原则
+
+子类能够替换其超类被使用
+
+鼓励你在package之间表达依赖关系时用interface，而非具体类型。通过定义小巧的interface，我们可以更有信心地切实满足其合约。
+
+
+
+##### Interface Segregation Principle 接口隔离原则
+
+Clients should not be forced to depend on methods they do not use.
+
+鼓励你仅取决于所需行为来定义函数和方法。如果你的函数仅仅需要有一个方法的interface做为参数，那么它很有可能只有一个责任。
+
+
+
+##### Dependency Inversion Principle 依赖反转原则
+
+High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should depend on abstractions.
+
+鼓励你在编译时将package所依赖的东西移除
+
+
+
