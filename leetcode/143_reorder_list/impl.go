@@ -1,5 +1,6 @@
 package impl
 
+// ListNode data structure
 type ListNode struct {
 	Val  int
 	Next *ListNode
