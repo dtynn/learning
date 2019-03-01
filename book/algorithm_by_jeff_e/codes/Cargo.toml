@@ -1,0 +1,6 @@
+[workspace]
+members = [
+	"ch1_0001_peasant_multiplication",
+	"ch1_002_tower_of_hanoi",
+	"ch1_003_mergesort",
+]

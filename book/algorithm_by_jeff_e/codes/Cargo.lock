@@ -1,0 +1,12 @@
+[[package]]
+name = "ch1_0001_peasant_multiplication"
+version = "0.1.0"
+
+[[package]]
+name = "ch1_002_tower_of_hanoi"
+version = "0.1.0"
+
+[[package]]
+name = "ch1_003_mergesort"
+version = "0.1.0"
+
