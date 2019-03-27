@@ -181,3 +181,19 @@ High-level modules should not depend on low-level modules. Both should depend on
 
 
 
+#### golang 在遍历 slice, map 过程中插入/删除元素
+
+##### slice
+
+遍历长度只在循环外获取一次, 该长度决定了遍历次数
+
+- 增加元素, 会改变 slice 内的元素, 但不会改变遍历次数
+- 删除元素, 会改变 slice 内的元素, 但不会改变遍历次数
+
+
+
+##### map
+
+- 删除元素, 则对应的元素不再出现在迭代过程中
+- 插入元素, 可能出现, 也可能不出现, 不可控
+
