@@ -14,3 +14,7 @@ version = "0.1.0"
 name = "ch1_004_quicksort"
 version = "0.1.0"
 
+[[package]]
+name = "ch1_005_quickselect"
+version = "0.1.0"
+
