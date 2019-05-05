@@ -5,4 +5,5 @@ members = [
 	"ch1_003_mergesort",
 	"ch1_004_quicksort",
 	"ch1_005_quickselect",
+	"ch2_001_n_queens",
 ]
