@@ -197,3 +197,11 @@ High-level modules should not depend on low-level modules. Both should depend on
 - 删除元素, 则对应的元素不再出现在迭代过程中
 - 插入元素, 可能出现, 也可能不出现, 不可控
 
+
+
+#### 关于 defer
+
+- 执行顺序 FILO
+- 在 defer 出现的行调用, 在 return 后执行 -> 参数值
+- 对返回值的影响, 遵循值传递, 指针传递
+- 对返回值的影响: 如果是返回值定义了变量名, defer 内赋值, 可能影响
