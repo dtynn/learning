@@ -205,3 +205,72 @@ High-level modules should not depend on low-level modules. Both should depend on
 - 在 defer 出现的行调用, 在 return 后执行 -> 参数值
 - 对返回值的影响, 遵循值传递, 指针传递
 - 对返回值的影响: 如果是返回值定义了变量名, defer 内赋值, 可能影响
+
+
+
+#### Rust 的零开销抽象
+
+下面的都是零开销的抽象：
+
+- tuple
+- gererics
+- traits
+- Option - 编译器最后（视情况）会把这一层包装优化掉
+- Vec
+- Box
+- Range
+- for-loops
+- mod
+- zero-sized types (C++ can't do that because every value needs to have an address)
+- enum discriminant optimizations which I hope are done for Option and friends (storing None as 0)
+- 链式迭代器可以产生更快的代码，有时比for循环还快
+- await和Futures的实现估计也会比C++的实现消耗更少的内存分配，await不是零开销的，但是会保持很少
+- 宏、构建脚本和常量初始化可以输出结构化的值，也是零开销
+- ...
+
+不是零开销的部分：
+
+- &dyn Trait
+- ..
+
+
+
+总结：
+
+**零开销不是指没有开销，而是指与不用（Rust给出的）抽象而用手动直接模拟实现相比，没有额外的开销。**
+
+通常来讲：当 Rust 有一个特性 F，它实现了一个编程的方面（解决了那样一种问题） A，现在你的程序要实现方面 A（解决那样一种问题），一般来说，只需要直接拿起 F 使用就对了，你手动重新实现（用 Rust 或 C 或其它语言），并不能带来更好的性能。
+
+**C++的实现遵从零开销原则：你用不到的东西，不会为其付出代价。更进一步：对于你用到的东西，你没法再做得更好。**
+
+对于Rust的情况来说，编译器会承担大部分的优化工作，所以在这方面（相对于C++来说）走得更远。换句话说，**实践中往往更容易写出慢的C++代码，而不是慢的Rust代码**。对于你描述的情况，元组慢是因为它们实现在编译器的上面一层，因此优化工作留给了程序员来做。而在Rust中，元组是一等公民，它们会被编译器自动优化掉。
+
+##### 零成本抽象
+
+官方核心团队无船同志的新博文，探讨了「零成本抽象」。
+
+零成本抽象在C++跟Rust是一個很重要的概念
+
+簡單來說就是：不希望有很大很重的runtime，並且可以在編譯時被優化。
+
+作者覺得 rust 有幾個很棒的 零成本抽象
+
+1. 所有權、借用
+
+保證内存的正確使用
+
+1. 迭代器、閉包函數
+
+可以輕鬆的串接 map, filter 等函數做處理
+
+1. await 异步函數
+
+當前的await語法雖然還沒有確定，但使用pinning 做到零成本抽象是確定的
+
+1. Unsafe 函數、模块邊界
+
+由於rust的語法複雜性，有很多實作會需要Unsafe的底層實作
+
+這些Unsafe函數實作了零成本抽象的底層
+
+讓我們在上層能安全的使用這些模块
