@@ -4,4 +4,5 @@ members = [
 	"p0004_median_of_two_sorted_arrays",
 	"p0011_container_with_most_water",
 	"p0015_three_sum",
+	"p0026_remove_duplicates_from_sorted_array",
 ]
