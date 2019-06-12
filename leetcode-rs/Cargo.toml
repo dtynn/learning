@@ -6,4 +6,5 @@ members = [
 	"p0015_three_sum",
 	"p0026_remove_duplicates_from_sorted_array",
 	"p0033_search_in_rotated_sorted_array",
+	"p0034_find_first_and_last_position_of_element_in_sorted_array",
 ]
