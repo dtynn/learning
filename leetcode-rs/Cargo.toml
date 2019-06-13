@@ -8,4 +8,5 @@ members = [
 	"p0033_search_in_rotated_sorted_array",
 	"p0034_find_first_and_last_position_of_element_in_sorted_array",
 	"p0041_first_missing_positive",
+	"p0042_trapping_rain_water",
 ]
