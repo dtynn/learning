@@ -10,4 +10,5 @@ members = [
 	"p0041_first_missing_positive",
 	"p0042_trapping_rain_water",
 	"p0048_rotate_image",
+	"p0053_maximum_subarray",
 ]
