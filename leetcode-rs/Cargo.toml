@@ -14,4 +14,5 @@ members = [
 	"p0054_spiral_matrix",
 	"p0055_jump_game",
 	"p0056_merge_intervals",
+	"p0062_unique_paths",
 ]
