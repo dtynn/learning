@@ -11,4 +11,5 @@ members = [
 	"p0042_trapping_rain_water",
 	"p0048_rotate_image",
 	"p0053_maximum_subarray",
+	"p0054_spiral_matrix",
 ]
