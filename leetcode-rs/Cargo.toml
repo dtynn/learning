@@ -16,4 +16,5 @@ members = [
 	"p0056_merge_intervals",
 	"p0062_unique_paths",
 	"p0066_plus_one",
+	"p0073_set_matrix_zeroes",
 ]

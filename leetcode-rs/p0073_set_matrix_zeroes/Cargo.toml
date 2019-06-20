@@ -1,0 +1,7 @@
+[package]
+name = "p0073_set_matrix_zeroes"
+version = "0.1.0"
+authors = ["dtynn <dtynn@163.com>"]
+edition = "2018"
+
+[dependencies]
