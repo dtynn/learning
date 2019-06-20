@@ -15,4 +15,5 @@ members = [
 	"p0055_jump_game",
 	"p0056_merge_intervals",
 	"p0062_unique_paths",
+	"p0066_plus_one",
 ]
