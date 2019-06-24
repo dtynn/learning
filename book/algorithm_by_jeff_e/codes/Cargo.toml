@@ -6,4 +6,5 @@ members = [
 	"ch1_004_quicksort",
 	"ch1_005_quickselect",
 	"ch2_001_n_queens",
+	"ch3_004_edit_distance",
 ]

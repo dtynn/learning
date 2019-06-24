@@ -24,3 +24,7 @@ version = "0.1.0"
 name = "ch2_001_n_queens"
 version = "0.1.0"
 
+[[package]]
+name = "ch3_004_edit_distance"
+version = "0.1.0"
+
