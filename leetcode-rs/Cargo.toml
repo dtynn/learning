@@ -18,4 +18,5 @@ members = [
 	"p0066_plus_one",
 	"p0073_set_matrix_zeroes",
 	"p0075_sort_colors",
+	"p0078_subsets",
 ]
