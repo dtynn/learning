@@ -19,4 +19,5 @@ members = [
 	"p0073_set_matrix_zeroes",
 	"p0075_sort_colors",
 	"p0078_subsets",
+	"p0079_word_search",
 ]
