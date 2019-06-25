@@ -20,4 +20,5 @@ members = [
 	"p0075_sort_colors",
 	"p0078_subsets",
 	"p0079_word_search",
+	"p0084_largest_rectangle_in_histogram",
 ]
