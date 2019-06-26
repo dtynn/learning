@@ -21,4 +21,6 @@ members = [
 	"p0078_subsets",
 	"p0079_word_search",
 	"p0084_largest_rectangle_in_histogram",
+	"p0088_merge_sorted_array",
+	"p0105_construct_binary_tree_from_preorder_and_inorder_traversal",
 ]
