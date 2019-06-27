@@ -24,4 +24,6 @@ members = [
 	"p0088_merge_sorted_array",
 	"p0105_construct_binary_tree_from_preorder_and_inorder_traversal",
 	"p0118_pascals_triangle",
+	"p0121_best_time_to_buy_and_sell_stock",
+	"p0122_best_time_to_buy_and_sell_stock_2",
 ]

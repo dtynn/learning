@@ -1,0 +1,7 @@
+[package]
+name = "p0122_best_time_to_buy_and_sell_stock_2"
+version = "0.1.0"
+authors = ["dtynn <dtynn@163.com>"]
+edition = "2018"
+
+[dependencies]
