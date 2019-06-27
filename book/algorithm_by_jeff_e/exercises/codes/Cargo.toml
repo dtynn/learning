@@ -1,4 +1,5 @@
 [workspace]
 members = [
 	"ch03_q003",
+	"ch03_q004",
 ]
