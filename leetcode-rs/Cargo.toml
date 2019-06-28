@@ -27,4 +27,5 @@ members = [
 	"p0121_best_time_to_buy_and_sell_stock",
 	"p0122_best_time_to_buy_and_sell_stock_2",
 	"p0128_logest_consecutive_sequence",
+	"p0152_maximum_product_subarray",
 ]
