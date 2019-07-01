@@ -33,4 +33,5 @@ members = [
 	"p0189_rotate_array",
 	"p0217_contains_duplicate",
 	"p0238_product_of_array_except_self",
+	"p0268_missing_number",
 ]
