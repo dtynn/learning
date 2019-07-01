@@ -30,4 +30,7 @@ members = [
 	"p0152_maximum_product_subarray",
 	"p0162_find_peak_elements",
 	"p0169_majority_element",
+	"p0189_rotate_array",
+	"p0217_contains_duplicate",
+	"p0238_product_of_array_except_self",
 ]
