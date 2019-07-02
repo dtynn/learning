@@ -1,7 +1,7 @@
 struct RandomizedSet {
+    start_at: std::time::Instant,
     nums: Vec<Option<i32>>,
     empty_idx: Vec<usize>,
-    random_next: usize,
     num_map: std::collections::HashMap<i32, usize>,
 }
 
@@ -13,9 +13,9 @@ impl RandomizedSet {
     /** Initialize your data structure here. */
     fn new() -> Self {
         RandomizedSet {
+            start_at: std::time::Instant::now(),
             nums: vec![],
             empty_idx: vec![],
-            random_next: 0,
             num_map: std::collections::HashMap::new(),
         }
     }
@@ -55,10 +55,11 @@ impl RandomizedSet {
 
     /** Get a random element from the set. */
     fn get_random(&mut self) -> i32 {
-        for i in 0..self.nums.len() {
-            let idx = (self.random_next + i) % self.nums.len();
+        let size = self.nums.len();
+        let start = (self.start_at.elapsed().subsec_nanos() as usize) % size;
+        for i in 0..size {
+            let idx = (start + i) % size;
             if let Some(val) = self.nums[idx] {
-                self.random_next = idx + 1;
                 return val;
             }
         }
