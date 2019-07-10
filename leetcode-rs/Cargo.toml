@@ -1,6 +1,7 @@
 [workspace]
 members = [
     "p0001_two_sum",
+	"p0003_longest_substring_without_repeating_characters",
 	"p0004_median_of_two_sorted_arrays",
 	"p0005_longest_palindromic_substring",
 	"p0010_regular_expression_matching",
@@ -9,6 +10,7 @@ members = [
 	"p0026_remove_duplicates_from_sorted_array",
 	"p0033_search_in_rotated_sorted_array",
 	"p0034_find_first_and_last_position_of_element_in_sorted_array",
+	"p0036_valid_sudoku",
 	"p0041_first_missing_positive",
 	"p0042_trapping_rain_water",
 	"p0044_wildcard_matching",
