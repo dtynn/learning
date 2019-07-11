@@ -25,6 +25,7 @@ members = [
 	"p0070_climbing_stairs",
 	"p0073_set_matrix_zeroes",
 	"p0075_sort_colors",
+	"p0076_minimum_window_substring",
 	"p0078_subsets",
 	"p0079_word_search",
 	"p0084_largest_rectangle_in_histogram",
