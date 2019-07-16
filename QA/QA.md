@@ -331,3 +331,47 @@ High-level modules should not depend on low-level modules. Both should depend on
 - 查找 O(logn)
 - 插入 O(logn)
 - 删除 O(logn)
+
+
+
+
+
+#### Reactor 和 Preactor
+
+- reactor: 同步, 用户进程触发 IO 操作并等待, 或者轮询查看 IO 操作是否就绪.
+  - 关注读写就绪
+  - 观测到就绪事件后执行读取操作
+  - 继续用户逻辑
+- preactor: 异步, 用户进程触发 IO 操作后做其他事, 等到 IO 操作完成时会得到通知.
+  - 关注读取完成
+  - 由操作系统完成读取操作, 并将读取的内容放入用户传递的缓存区
+  - 继续用户逻辑
+
+区别: 读取和写入操作的执行者.
+
+
+
+- 同步阻塞: 发起 IO, 等待 IO 完成
+- 同步非阻塞: 发起 IO, 处理其他, 主动询问 IO 完成状况
+- 异步阻塞: 发起 IO, 使用 select 等待通知, 可以同时监听多个文件句柄
+- 异步非阻塞: 发起 IO, 应用程序得到通知后直接处理数据, 无需进行读写操作
+
+
+
+#### Actors 模型和 CSP 模型
+
+- Actors
+
+  actors 之间直接通信, 不经过中介
+
+  1. 每个过程作为一个 actor, 能与其他 actor 互不干扰并发运行
+  2. actor A 想作用 actor B, 通过发送信息的方式, 而 actorB 是否接受, 由 actorB 负责
+  3. 每个 actor 有一个邮箱, 信息的投递和读取分开, actor 之间的交互解耦
+  4. 目标 actor 的 id 需要显示传递
+
+- CSP
+
+  过程之间不直接通信, 通过 Channel 通信
+
+  1. channel 值中间媒介, 上游不关注下游是谁接受数据
+  2. 过程之间可能存在多个 Channel
