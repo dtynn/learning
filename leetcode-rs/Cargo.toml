@@ -43,6 +43,7 @@ members = [
 	"p0136_single_number",
 	"p0139_word_break",
 	"p0140_word_break_2",
+	"p0148_sort_list",
 	"p0152_maximum_product_subarray",
 	"p0162_find_peak_elements",
 	"p0169_majority_element",
