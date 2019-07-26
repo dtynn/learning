@@ -1,0 +1,9 @@
+[package]
+name = "p0328_odd_even_linked_list"
+version = "0.1.0"
+authors = ["dtynn <dtynn@163.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
