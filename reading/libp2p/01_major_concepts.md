@@ -82,7 +82,7 @@
 
   `Transport` 定义中有一些比较值得关注的方法：
 
-  ```
+  ```rust
   pub trait Transport {
       ......
   
