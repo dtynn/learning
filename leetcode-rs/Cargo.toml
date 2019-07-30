@@ -52,6 +52,7 @@ members = [
 	"p0206_reverse_linked_list",
 	"p0215_kth_largest_element_in_an_array",
 	"p0217_contains_duplicate",
+	"p0218_the_skyline_problem",
 	"p0234_palindrome_linked_list",
 	"p0238_product_of_array_except_self",
 	"p0268_missing_number",
