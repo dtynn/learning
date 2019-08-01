@@ -149,7 +149,7 @@
 
 ##### Task
 
- `Task` 是定义在模块内部的，我们主要看他的代码。
+ `Task` 是定义在模块内部的。
 
 ```rust
 /// Message to transmit from the public API to a task.
@@ -243,11 +243,133 @@ where
 
 
 
+通过 `Task` 的 `Future` 实现, 我们可以了解 `State` 的细节:
+
+- `State::Future` :
+
+  1. 持续接收 `ToTaskMessage::HandleEvent` 和 `ToTaskMessage::TakeOver` 并缓存下来, 直到 receiver 中暂时没有更多信息.
+  2. 确认与目标 node 的连接情况:
+
+  - 连接成功
+    1. 使用连接信息 (连接信息 conn_info 和 连接复用器 muxer) 构造成 `HandledNode`
+    2. 将 `events_buffer`  中的 event 全部转发到 node 中
+    3. 将状态转换成  `State::SendEvent`, 附带 event 为 `FromTaskMessage::NodeReached`
+  - 未连接: 返回 `Async::NotReady`, 等待下一次 poll
+  - 连接失败: 将状态转换成 `State::SendEvent`, 附带 event 为 `FromTaskMessage::TaskClosed`
+
+- `State::SendEvent` :
+
+  1. 持续接收 `ToTaskMessage`:
+
+     - 若接收到 `ToTaskMessage::TakeOver`, 则保存
+     - 若接收到 `ToTaskMessage::HandleEvent` 且存在已连接的 node, 则向 node 发送
+
+     - 若 receiver 中暂时没有更多信息, 则中断接收
+     - 若 receiver 关闭, 根据是否存在已连接的 node, 将状态转为 `State::Closing` 或结束当前任务
+
+  2. 通过 sender 将附加的 event 向外界发送, 将 event 插入 sender 队列:
+
+     - 入队成功: 将状态转换成 `State::PollComplete`
+
+     - 未入队: 维持状态等待下一次 poll
+     - 入队异常: 根据是否存在已连接的 node, 将状态转为 `State::Closing` 或结束当前任务
+
+- `State::Closing` : 维持状态, 持续等待直到 `State::Future` 中连接成功获取的 muxer 关闭
+
+- `State::PollComplete` :
+
+  1. 持续接收 `ToTaskMessage`, 处理逻辑同 `State::SendEvent`;
+  2. 确认 sender 中 event 的发送状态:
+     - 未发送: 维持状态等待下一次 poll
+     - 发送成功: 根据 event 类型决定下一个状态:
+       - `FromTaskMessage::TaskClosed`: 状态转换成 `State::Closing`
+       - 其他: 状态转换成 `State::Node`
+     - 发送异常: 根据是否存在已连接的 node, 将状态转为 `State::Closing` 或结束当前任务
+
+- `State::Node`: 
+
+  在此状态下, 已经确保存在已连接的 node, 
+
+  1. 持续接收 `ToTaskMessage`, 处理逻辑同 `State::SendEvent`
+  2. 若已经接收到 node 的确认信息, 释放所有 `taken_over` 中的发送端, 通知接收端
+  3. 尝试获取 node 传递过来的 event:
+     - 未就绪: 维持状态等待下一次 poll
+     - 就绪: 将状态转换成 `State::SendEvent`, 附带 event 为 `FromTaskMessage::NodeEvent`
+     - 异常: 将状态转换成 `State::SendEvent`, 附带 event 为 `FromTaskMessage::TaskClosed`
+
+
+
+综上, 我们可以总结 `Task` 的工作方式如下:
+
+1. 尝试连接指定 node, 根据连接情况, 向外界发送 event
+2. 在 node 连接成功的情况下, 持续在外界和 node 之间传递 event
+3. 当外界停止发送信息, 或通信过程中出现异常时, 进入清理并关闭当前 task 的流程
+
+
+
+##### Manager
+
+`Manager`的作用是:
+
+1. 管理并驱动所有 `Task`
+2. 持续分发外界流入 和 `Task` 反馈的 event
+
 
 
 
 
 #### core::nodes::network
 
+`network` 将 `core::nodes` 中的其他模块和概念进行整合, 构成完整的 p2p 网络底层框架.
 
+
+
+`Network` 是核心结构体, 其定义如下:
+
+```rust
+/// Implementation of `Stream` that handles the nodes.
+pub struct Network<TTrans, TInEvent, TOutEvent, THandler, THandlerErr, TConnInfo = PeerId, TPeerId = PeerId>
+where
+    TTrans: Transport,
+{
+    /// Listeners for incoming connections.
+    listeners: ListenersStream<TTrans>,
+
+    /// The nodes currently active.
+    active_nodes: CollectionStream<TInEvent, TOutEvent, THandler, InternalReachErr<TTrans::Error, TConnInfo>, THandlerErr, (), (TConnInfo, ConnectedPoint), TPeerId>,
+
+    /// The reach attempts of the network.
+    /// This needs to be a separate struct in order to handle multiple mutable borrows issues.
+    reach_attempts: ReachAttempts<TPeerId>,
+
+    /// Max numer of incoming connections.
+    incoming_limit: Option<u32>,
+
+    /// Unfinished take over message to be delivered.
+    ///
+    /// If the pair's second element is `AsyncSink::NotReady`, the take over
+    /// message has yet to be sent using `PeerMut::start_take_over`.
+    ///
+    /// If the pair's second element is `AsyncSink::Ready`, the take over
+    /// message has been sent and needs to be flushed using
+    /// `PeerMut::complete_take_over`.
+    take_over_to_complete: Option<(TPeerId, AsyncSink<InterruptedReachAttempt<TInEvent, (TConnInfo, ConnectedPoint), ()>>)>
+}
+
+```
+
+
+
+`Network` 能够
+
+1. 接收来自其他节点的连接请求(listeners)
+2. 尝试连接指定的节点 (active_nodes)
+3. 将 1, 2 中创建的连接转换成本端与对端的信息通道 (active_nodes), 并加以维护
+
+
+
+这样外界, 如上层应用, 即可通过  `Network`  与其他端通信:
+
+1. 由  `Network` 负责信息的传递
+2. 由应用层负责信息的解读和执行
 
