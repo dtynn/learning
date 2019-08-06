@@ -50,6 +50,7 @@ members = [
 	"p0189_rotate_array",
 	"p0198_house_robber",
 	"p0206_reverse_linked_list",
+	"p0212_word_search_2",
 	"p0215_kth_largest_element_in_an_array",
 	"p0217_contains_duplicate",
 	"p0218_the_skyline_problem",
