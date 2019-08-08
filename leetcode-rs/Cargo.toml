@@ -51,6 +51,7 @@ members = [
 	"p0198_house_robber",
 	"p0200_number_of_islands",
 	"p0206_reverse_linked_list",
+	"p0207_course_schedule",
 	"p0212_word_search_2",
 	"p0215_kth_largest_element_in_an_array",
 	"p0217_contains_duplicate",
