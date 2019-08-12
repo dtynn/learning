@@ -68,5 +68,6 @@ members = [
 	"p0315_count_of_smaller_numbers_after_self",
 	"p0322_coin_change",
 	"p0328_odd_even_linked_list",
+	"p0329_longest_increasing_path_in_a_matrix",
 	"p0380_insert_delete_get_random_o_1",
 ]
