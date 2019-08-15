@@ -47,6 +47,7 @@ members = [
 	"p0152_maximum_product_subarray",
 	"p0155_min_stack",
 	"p0162_find_peak_elements",
+	"p0166_fraction_to_recurring_decimal",
 	"p0169_majority_element",
 	"p0189_rotate_array",
 	"p0198_house_robber",
