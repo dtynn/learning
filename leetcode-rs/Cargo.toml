@@ -50,6 +50,7 @@ members = [
 	"p0166_fraction_to_recurring_decimal",
 	"p0169_majority_element",
 	"p0171_excel_sheet_column_number",
+	"p0172_factorial_trailing_zeroes",
 	"p0189_rotate_array",
 	"p0198_house_robber",
 	"p0200_number_of_islands",
